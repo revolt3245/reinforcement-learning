@@ -55,7 +55,7 @@ learning_rate = 1e-1
 input_size = env.observation_space.shape[0]
 output_size = env.action_space.n
 
-dis = 0.95
+dis = 0.9
 
 def bot_play(mainDQN):
     s = env.reset()
@@ -100,9 +100,9 @@ def main():
                 tot_score += reward
                 
                 if done:
-                    reward = -10
+                    reward = -100
                     
-                if (reward == 1) and (step_count-rewardstep <= 100):
+                if (reward > 0) and (step_count-rewardstep <= 100):
                     rewardstep = step_count
                     reward *= 2
                 
